@@ -1,0 +1,24 @@
+﻿{
+  "manifest_version": 3,
+  "name": "Agora",
+  "version": "1",
+  "permissions": [
+    "sidePanel","tabs","activeTab","scripting"
+  ],
+  "content_scripts": [
+   {
+     "matches": ["<all_urls>"],
+     "js": ["content.js", "bootstrap.min.js"],
+     "css": ["style.css", "bootstrap.min.css"]
+   }
+  ],
+  "side_panel": {
+    "default_path": "sidepanel.html"
+  },
+  "background": {
+    "service_worker": "background.js"
+  },
+  "action": {
+    "default_title": "Click to open panel"
+  }
+}
