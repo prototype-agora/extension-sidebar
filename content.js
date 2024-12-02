@@ -10,3 +10,10 @@ window.addEventListener('mouseup', function(event) {
   	})();
   }
 });
+
+window.addEventListener('load', function(event) {
+  href = window.location.href;
+	(async () => {
+	    const response = await chrome.runtime.sendMessage({event: "window", data: href});
+  	})();
+});

@@ -4,8 +4,8 @@
   <title>Agora Side Panel</title>
 </head>
 <body>
-<script src="bootstrap.min.js"></script>
-<link rel="stylesheet" type="text/css" href="bootstrap.min.css"></link>
+<script src="../bootstrap.min.js"></script>
+<link rel="stylesheet" type="text/css" href="../bootstrap.min.css"></link>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
@@ -23,8 +23,11 @@
     <div class="input-group mb-3"></div>
     <input type="text" class="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1" id="title">
 
-    <label for="text_selected">Markierter Text</label><br><br>
-    <label style="min-height: 120px; max-height: 300px;" id="text_selected"></label><br><br>
+    <label for="text_selected">Videoabschnitt</label><br><br>
+    <div>Start</div>
+    <div>Ende</div>
+    <div>Dauer</div>
+
     <label for="comment">Kommentar</label><br>
     <textarea id="comment" cols="30" rows="10"></textarea><br>
     <input type="button" id="save" value="Save">
@@ -35,5 +38,5 @@
 </div>
 
 </body>
-<script src="sidepanel.js"></script>
+<script src="../sidepanel.js"></script>
 </html>
