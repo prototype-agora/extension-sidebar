@@ -5,6 +5,7 @@
 </head>
 <body>
 <script src="../bootstrap.min.js"></script>
+<script src="../apis.google.js"></script>
 <link rel="stylesheet" type="text/css" href="../bootstrap.min.css"></link>
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
@@ -17,26 +18,27 @@
 </ul>
 <div class="tab-content" id="myTabContent">
   <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
-    <div class="input-group mb-3"></div>
-    <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="user">
-
-    <div class="input-group mb-3"></div>
-    <input type="text" class="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1" id="title">
-
-    <label for="text_selected">Videoabschnitt</label><br><br>
-    <div>Start</div>
-    <div>Ende</div>
-    <div>Dauer</div>
-
-    <label for="comment">Kommentar</label><br>
-    <textarea id="comment" cols="30" rows="10"></textarea><br>
-    <input type="button" id="save" value="Save">
-  </div>
-  <div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-    2DO
-  </div>
+  <div class="input-group mb-3"></div>
+  <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="user">
+  
+  <div class="input-group mb-3"></div>
+  <input type="text" class="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1" id="title">
+  
+  <label for="text_selected">Videoabschnitt</label><br><br>
+  <div>Start</div>
+  <div>Ende</div>
+  <div>Dauer</div>
+  
+  <label for="comment">Kommentar</label><br>
+  <textarea id="comment" cols="30" rows="10"></textarea><br>
+  <input type="button" id="save" value="Save">
+</div>
+<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+  2DO
+</div>
 </div>
 
 </body>
+<script src="../youtube_api.js"></script>
 <script src="../sidepanel.js"></script>
 </html>

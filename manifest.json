@@ -8,10 +8,13 @@
   "content_scripts": [
    {
      "matches": ["<all_urls>"],
-     "js": ["content.js", "bootstrap.min.js"],
+     "js": ["content.js", "bootstrap.min.js", "apis.google.js"],
      "css": ["style.css", "bootstrap.min.css"]
    }
   ],
+  "externally_connectable": {
+    "matches": ["https://www.googleapis.com/*"]
+  },
   "side_panel": {
     "default_path": "sidepanel_html/article.html"
   },
