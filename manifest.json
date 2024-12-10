@@ -19,7 +19,8 @@
     "default_path": "sidepanel_html/article.html"
   },
   "background": {
-    "service_worker": "background.js"
+    "service_worker": "background.js",
+    "type": "module"
   },
   "action": {
     "default_title": "Click to open panel"
