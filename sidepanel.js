@@ -1,4 +1,18 @@
 const elmSave = document.getElementById("save");
+const elmComment = document.getElementById("loadComments");
+
+
+elmComment.onclick = () => {
+  (async () => {
+    const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+    const query_params = new URLSearchParams(tab.url);
+    const videoId = query_params.get('https://www.youtube.com/watch?v');
+
+    const response = await chrome.runtime.sendMessage({event: "get_comments", videoId: videoId });
+    
+    alert(response); // OUTPUT: undefined
+  })();
+}
 
 elmSave.onclick = () => {
   // Send a message to the service worker requesting the user's data
