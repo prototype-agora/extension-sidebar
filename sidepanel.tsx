@@ -14,7 +14,7 @@ function Button() {
 
   return (
     <button onClick={handleClick}>
-      Click me
+      get comment threads
     </button>
   );
 }
