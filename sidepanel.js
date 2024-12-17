@@ -1,5 +1,5 @@
 const elmSave = document.getElementById("save");
-const elmComment = document.getElementById("loadComments");
+const elmComment = document.getElementById("show-comments");
 
 
 elmComment.onclick = () => {

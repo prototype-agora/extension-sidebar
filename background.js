@@ -48,9 +48,6 @@ async function get_comments(videoId) {
   const response = await fetch(fetch_string);
   const json = await response.json();
 
-  // result visible at chrome://extensions/?errors=<EXTENSION-ID>
-  // throw new Error(JSON.stringify(json));
-
   if (!response.ok) {
     throw new Error(`Response status: ${response.status}`);
   }

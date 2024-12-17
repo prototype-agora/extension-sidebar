@@ -9,14 +9,14 @@
 
 <ul class="nav nav-tabs" id="myTab" role="tablist">
   <li class="nav-item" role="presentation">
-    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Send</button>
+    <button class="nav-link" id="show-comments" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="true">Show</button>
   </li>
   <li class="nav-item" role="presentation">
-    <button class="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Show</button>
+    <button class="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="false">Send</button>
   </li>
 </ul>
 <div class="tab-content" id="myTabContent">
-  <div class="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
+  <div class="tab-pane fade" id="home" role="tabpanel" aria-labelledby="home-tab"></div>
   <div class="input-group mb-3"></div>
   <input type="text" class="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="user">
   
@@ -32,8 +32,11 @@
   <textarea id="comment" cols="30" rows="10"></textarea><br>
   <input type="button" id="save" value="Save">
 </div>
-<div class="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
-  <input type="button" id="loadComments" value="show comments">
+<div class="tab-pane fade show active" id="profile" role="tabpanel" aria-labelledby="show-comments">
+  with timestamp
+  <ul id="comments">
+    <li>1</li>
+  </ul>
 </div>
 </div>
 
