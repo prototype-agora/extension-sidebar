@@ -1,12 +1,11 @@
 {
-  "name": "Test-content-scripts-ui",
-  "displayName": "Test content scripts ui",
+  "name": "Agora",
+  "displayName": "Agora",
   "version": "0.0.1",
-  "description": "This example demonstrates how to render a React component using content scripts",
-  "author": "Plasmo Corp. <foss@plasmo.com>",
+  "description": "Interface to highlight informations",
+  "author": "PM <geforcemcdoodle@gmail.com>",
   "contributors": [
-    "louisgv",
-    "vinne"
+    "paul"
   ],
   "scripts": {
     "dev": "plasmo dev",
