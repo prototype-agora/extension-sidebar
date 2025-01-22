@@ -1,5 +1,9 @@
 import { useState } from "react"
 
+let [tab] = [undefined];
+(async () => {
+  [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
+})();
 
 function CommentList() {  
   const [comments, setComments] = useState([]);
@@ -31,10 +35,28 @@ function CommentList() {
   );
 }
 
+function ArticleForm() {
+  
+  return (
+    <div>
+      <ul className="nav nav-tabs" id="myTab" role="tablist">
+        <li className="nav-item" role="presentation">
+          <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Send</button>
+        </li>
+        <li className="nav-item" role="presentation">
+          <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Show</button>
+        </li>
+      </ul>
+    </div>
+  );
+}
+
 function IndexSidePanel() {
-
-
-  return <CommentList/>;
+  if (tab.url.includes("youtube")) {
+    return (<CommentList/>);
+  } else {
+    return (<ArticleForm/>);
+  }   
 }
 
 export default IndexSidePanel
