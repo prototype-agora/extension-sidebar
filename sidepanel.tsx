@@ -1,3 +1,6 @@
+import 'bootstrap/dist/css/bootstrap.min.css';
+import 'bootstrap/dist/js/bootstrap.bundle.min';
+
 import { useState } from "react"
 
 let [tab] = [undefined];
@@ -47,6 +50,25 @@ function ArticleForm() {
           <button className="nav-link" id="profile-tab" data-bs-toggle="tab" data-bs-target="#profile" type="button" role="tab" aria-controls="profile" aria-selected="false">Show</button>
         </li>
       </ul>
+      <div className="tab-content" id="myTabContent">
+        <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
+          <div className="input-group mb-3"></div>
+          <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="user"/>
+
+          <div className="input-group mb-3"></div>
+          <input type="text" className="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1" id="title"/>
+
+          <label htmlFor="text_selected">Markierter Text</label><br/><br/>
+          <label style={{height: '300px'}}></label><br/><br/>
+          <label htmlFor="comment">Kommentar</label><br/>
+          <textarea id="comment" cols={30} rows={10}/><br/>
+          <input type="button" id="save" value="Save"></input>
+
+        </div>
+        <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
+          2DO
+        </div>
+      </div>
     </div>
   );
 }
