@@ -1,6 +1,7 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
 
+
 import { useState } from "react"
 
 let [tab] = [undefined];
@@ -10,14 +11,14 @@ let [tab] = [undefined];
 
 function CommentList() {  
   const [comments, setComments] = useState([]);
-
+  
   if (comments.length==0) {
     return (
       <button onClick={handleClick}>
         get comments with timestamp
       </button>)
   }
-
+  
   function handleClick() {
     (async () => {
       const [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
@@ -74,7 +75,7 @@ function ArticleForm() {
 }
 
 function IndexSidePanel() {
-  if (tab.url.includes("youtube")) {
+  if (tab.url != undefined && tab.url.includes("youtube")) {
     return (<CommentList/>);
   } else {
     return (<ArticleForm/>);
