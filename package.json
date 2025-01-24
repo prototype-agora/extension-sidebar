@@ -1,19 +1,20 @@
 {
-  "name": "Agora",
+  "name": "extension-sidebar",
   "displayName": "Agora",
   "version": "0.0.1",
-  "description": "Interface to highlight informations",
+  "description": "Interface to highlight or save informations",
   "author": "PM <geforcemcdoodle@gmail.com>",
-  "contributors": [
-    "paul"
-  ],
   "scripts": {
     "dev": "plasmo dev",
     "build": "plasmo build",
     "package": "plasmo package"
   },
   "dependencies": {
-    "plasmo": "^0.89",
+    "@plasmohq/messaging": "^0.6.2",
+    "bootstrap": "^5.3.3",
+    "jquery": "^3.7.1",
+    "plasmo": "0.89.4",
+    "popper.js": "^1.16.1",
     "react": "18.2.0",
     "react-dom": "18.2.0"
   },
@@ -23,9 +24,6 @@
     "@types/node": "20.11.5",
     "@types/react": "18.2.48",
     "@types/react-dom": "18.2.18",
-    "bootstrap": "5.3.3",
-    "jquery": "^3.7.1",
-    "popper.js": "^1.16.1",
     "prettier": "3.2.4",
     "typescript": "5.3.3"
   },
