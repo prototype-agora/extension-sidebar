@@ -12,12 +12,11 @@ window.addEventListener('mouseup', function(event) {
   if (selection.length>4) {
 	(async () => {
     const resp = await sendToBackground({
-      name: "ping",
+      name: "selectText",
       body: {
         selection: selection
       },
     });
-    console.log(resp.message);
   })();
   }
 });

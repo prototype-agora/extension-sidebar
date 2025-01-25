@@ -50,9 +50,25 @@ function ArticleForm() {
       setSelection(req.body["selection"]);
     }
   });
+
+  function handleSubmit(e) {
+    // Prevent the browser from reloading the page
+    e.preventDefault();
+
+    const form = e.target;
+    const formData = new FormData(form);
+
+    // fetch('/some-api', { method: form.method, body: formData });
+
+    // Or you can work with it as a plain object:
+    const formJson = Object.fromEntries(formData.entries());
+    let postJson = {...formJson, selection: selection};
+    console.log(postJson);
+  }
   
   return (
-    <div>
+    <form method="post" onSubmit={handleSubmit}>
+
       <ul className="nav nav-tabs" id="myTab" role="tablist">
         <li className="nav-item" role="presentation">
           <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Send</button>
@@ -64,23 +80,26 @@ function ArticleForm() {
       <div className="tab-content" id="myTabContent">
         <div className="tab-pane fade show active" id="home" role="tabpanel" aria-labelledby="home-tab">
           <div className="input-group mb-3"></div>
-          <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" id="user"/>
+          <input type="text" className="form-control" placeholder="Username" aria-label="Username" aria-describedby="basic-addon1" name="user"/>
 
           <div className="input-group mb-3"></div>
-          <input type="text" className="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1" id="title"/>
+          <input type="text" className="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1" name="title"/>
 
           <label htmlFor="text_selected">Markierter Text</label><br/><br/>
           <label style={{height: '300px'}}>{selection}</label><br/><br/>
           <label htmlFor="comment">Kommentar</label><br/>
-          <textarea id="comment" cols={30} rows={10}/><br/>
-          <input type="button" id="save" value="Save"></input>
+          <textarea id="comment" cols={30} rows={10} name="comment"/><br/>
+
+          <button type="submit">
+            Save
+          </button>
 
         </div>
         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           2DO
         </div>
       </div>
-    </div>
+    </form>    
   );
 }
 
