@@ -1,5 +1,6 @@
 import 'bootstrap/dist/css/bootstrap.min.css';
 import 'bootstrap/dist/js/bootstrap.bundle.min';
+import { useMessage } from "@plasmohq/messaging/hook"
 
 
 import { useState } from "react"
@@ -8,6 +9,8 @@ let [tab] = [undefined];
 (async () => {
   [tab] = await chrome.tabs.query({active: true, lastFocusedWindow: true});
 })();
+
+
 
 function CommentList() {  
   const [comments, setComments] = useState([]);
@@ -40,6 +43,13 @@ function CommentList() {
 }
 
 function ArticleForm() {
+  const [selection, setSelection] = useState([]);
+
+  useMessage(async (req, res) => {
+    if (req.name ="selectText") {
+      setSelection(req.body["selection"]);
+    }
+  });
   
   return (
     <div>
@@ -60,7 +70,7 @@ function ArticleForm() {
           <input type="text" className="form-control" placeholder="Titel" aria-label="Titel" aria-describedby="basic-addon1" id="title"/>
 
           <label htmlFor="text_selected">Markierter Text</label><br/><br/>
-          <label style={{height: '300px'}}></label><br/><br/>
+          <label style={{height: '300px'}}>{selection}</label><br/><br/>
           <label htmlFor="comment">Kommentar</label><br/>
           <textarea id="comment" cols={30} rows={10}/><br/>
           <input type="button" id="save" value="Save"></input>

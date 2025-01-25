@@ -14,7 +14,6 @@ window.addEventListener('mouseup', function(event) {
     const resp = await sendToBackground({
       name: "ping",
       body: {
-        id: 123,
         selection: selection
       },
     });
