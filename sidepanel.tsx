@@ -51,6 +51,36 @@ function ArticleForm() {
     }
   });
 
+  async function sendPost(quote, link, comment) {
+    const url = 'http://127.0.0.1:8000/graphql';
+    const query = `
+        mutation {
+          createPost(
+            commentText: "${comment}",
+            firstName: "Ulf",
+            link: "https://www.nachdenkseiten.de/?p=121861",
+            quoteText: "${quote}",
+            title: "{title}"
+          ) {
+              appuserId
+              commentId
+              quoteId
+              sourceId  
+            }
+        }`;
+    
+    const response = await fetch(url, {
+        method: 'POST',
+        headers: {
+          'Content-Type': 'application/json',
+        },
+        body: JSON.stringify({ query })
+    });
+    
+    const responseData = await response.json();
+    console.log(JSON.stringify(responseData));
+  }
+
   function handleSubmit(e) {
     // Prevent the browser from reloading the page
     e.preventDefault();
@@ -60,10 +90,10 @@ function ArticleForm() {
 
     // fetch('/some-api', { method: form.method, body: formData });
 
-    // Or you can work with it as a plain object:
     const formJson = Object.fromEntries(formData.entries());
     let postJson = {...formJson, selection: selection};
-    console.log(postJson);
+
+    sendPost(selection, "link", Comment);
   }
   
   return (
