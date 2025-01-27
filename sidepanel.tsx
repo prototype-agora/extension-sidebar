@@ -11,8 +11,7 @@ let [tab] = [undefined];
 })();
 
 
-
-function CommentList() {  
+function CommentList() {
   const [comments, setComments] = useState([]);
   
   if (comments.length==0) {
@@ -44,6 +43,11 @@ function CommentList() {
 
 function ArticleForm() {
   const [selection, setSelection] = useState([]);
+  const [savedCounter, setSavedCounter] = useState(0);
+
+  const process = () => {
+    setSavedCounter(savedCounter+1);
+  };
 
   useMessage(async (req, res) => {
     if (req.name ="selectText") {
@@ -51,21 +55,21 @@ function ArticleForm() {
     }
   });
 
-  async function sendPost(quote, link, comment) {
+  async function sendPost(user, link, title, quote, comment) {
     const url = 'http://127.0.0.1:8000/graphql';
     const query = `
         mutation {
           createPost(
             commentText: "${comment}",
-            firstName: "Ulf",
-            link: "https://www.nachdenkseiten.de/?p=121861",
+            firstName: "${user}",
+            link: "${link}",
             quoteText: "${quote}",
-            title: "{title}"
+            title: "${title}"
           ) {
               appuserId
               commentId
               quoteId
-              sourceId  
+              sourceId
             }
         }`;
     
@@ -78,11 +82,11 @@ function ArticleForm() {
     });
     
     const responseData = await response.json();
-    console.log(JSON.stringify(responseData));
+    console.log(JSON.stringify(responseData));    
   }
 
   function handleSubmit(e) {
-    // Prevent the browser from reloading the page
+    // Prevent the browser from reprocessing the page
     e.preventDefault();
 
     const form = e.target;
@@ -91,14 +95,12 @@ function ArticleForm() {
     // fetch('/some-api', { method: form.method, body: formData });
 
     const formJson = Object.fromEntries(formData.entries());
-    let postJson = {...formJson, selection: selection};
 
-    sendPost(selection, "link", Comment);
+    sendPost(formJson["user"], tab.url, formJson["title"], selection, formJson["comment"],);
   }
   
   return (
     <form method="post" onSubmit={handleSubmit}>
-
       <ul className="nav nav-tabs" id="myTab" role="tablist">
         <li className="nav-item" role="presentation">
           <button className="nav-link active" id="home-tab" data-bs-toggle="tab" data-bs-target="#home" type="button" role="tab" aria-controls="home" aria-selected="true">Send</button>
@@ -120,10 +122,9 @@ function ArticleForm() {
           <label htmlFor="comment">Kommentar</label><br/>
           <textarea id="comment" cols={30} rows={10} name="comment"/><br/>
 
-          <button type="submit">
-            Save
+          <button type="submit" className="btn btn-secondary" onClick={process}>
+            Save <span className="badge text-bg-secondary">{savedCounter}</span>
           </button>
-
         </div>
         <div className="tab-pane fade" id="profile" role="tabpanel" aria-labelledby="profile-tab">
           2DO
